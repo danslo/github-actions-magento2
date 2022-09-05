@@ -34,8 +34,10 @@ jobs:
   coding-standard:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: './coding-standard'
+      - name: Sync repos and check out
+        uses: actions/checkout@v3
+      - name: Run coding standard tests
+        uses: './coding-standard'
         with:
           version: ${{ github.event.inputs.version || '*' }}
           path: ${{ github.event.inputs.path || '_test/demo-package' }}
